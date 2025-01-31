@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: consumerkafka
+  kafka:
+    producer:
+      bootstrap-servers: localhost:8094,localhost:8093,localhost:8092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    template:
+      default-topic: mon-topic3
+    consumer:
+      bootstrap-servers: localhost:8094,localhost:8093,localhost:8092
+      group-id: test-group
+      enable-auto-commit: true
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      auto-offset-reset: latest
+      properties:
+        group.instance.id: test02
+    listener:
+      missing-topics-fatal: false
+
